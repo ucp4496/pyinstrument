@@ -38,13 +38,24 @@ No bugs or defects were identified during this integration test
 ### References
 ChatGPT was used for help with markup phrasing and code cleanup assistance
 
-## Test integration Michael
+## Test Integration for Profiler and JSON Renderer
 ### Test Design Summary
+This integration test checked the interaction between the Profiler core module that manages the profiling lifecycle, collecting call stack samples, and the JSONRender module, which converts profiling data into a human-readable JSON File. The test was small, to confirm that the profiling infrastructure supports JSON outputs for downstream usage and consumption.
+
 ### Test Data Preparation
+I went with a loop, since it would quickly make function calls that would appear throughout the profiling. The loop goes through numbers 0 to 999, showing how many times the loop is referenced inside the JSON report
+
 ### Execution and Results
+The Test was conducted using pytest inside of a WSL Ubuntu venv. With profiler being called, the test went under way and in my findings:
+- The test ran successfully
+- The renderer made a valid JSON file with data parsed into a python dict
+- The test completed without an assertation failure
+- Render pathway behaved as intended
+
 ### Bug Reports
+No bugs or defects were identified during this integration test
 
 ## Group Contributions
 - Jose: Implementation of test integration profiler
 - Ursula: Did the test profiler and html
-- Michael:
+- Michael: Tested profiler and jsonRenderer
