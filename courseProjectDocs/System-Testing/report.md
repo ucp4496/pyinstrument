@@ -61,18 +61,31 @@ PyInstrument 5.1.1 installed in a Python virtual environment on a mac, terminal 
 - macOS Directory Protection: macOS sometimes applies silent restrictions in certain directories—especially inside iCloud-synced folders or protected system paths; if the script is running inside a restricted path, PyInstrument may fail to write files without showing an OS error
 
 ### Test ID
-TC-E2E-XXX
+TC-E2E-003
 ### Title
+End-to-End Validation of PyInstrument JSON UI Renderer
 ### Pre conditions
+PyInstrument is installed and accessible through the CLI (either via WSL or Windows).
+A valid Python script exists at the test path (e.g., test_script.py).
+The tester has permission to execute commands and write output files.
+The environment uses a supported Python version (3.8+).
 ### Test steps
+In WSL, run the following command: ```python3 -m pyinstrument --renderer json "/mnt/c/Users/.../test_script.py" > output.json```
+
 ### Expected results
+output.json is created and contains valid JSON.
 
 ## Execution and Results
 - Initial attempt using ```-o report.html``` did not generate the file. I needed to do a ls -la to show the ```report.html``` file
 - If the code takes to little time to execute it doesnt create the ```report.html```
 - No functional defects were found after incrementing the time of execution of the script
 
+
+- The JSON UI test command successfully executed using the PyInstrument CLI with no errors or warnings.
+- The output file output.json was made without issues.
+- Parsing the JSON shows that the file structure was valid and contained all required top-level fields: ```"root_frame"```,```"duration"```, ```"samples"```, and ```"frames"```
+
 ## Group Contributions
 - Jose: Designed and executed the CLI end to end profiling test case (TC-E2E-001). Documented results, verified HTML output generation and identified the correct report generation method
 - Ursula: Did TC-E2E-001 and the error report 
-- Michael:
+- Michael: Designed the JSON UI end-to-end system test, along with executing the test in the development environment.
