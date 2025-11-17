@@ -79,13 +79,9 @@ End-to-End Validation of PyInstrument JSON UI Renderer
 In WSL, run the following command: ```python3 -m pyinstrument --renderer json "/mnt/c/Users/.../test_script.py" > output.json```
 
 ### Expected results
-output.json is created and contains valid JSON.
+The output.json is created and contains valid JSON.
 
-## Execution and Results
-- Initial attempt using ```-o report.html``` did not generate the file. I needed to do a ls -la to show the ```report.html``` file
-- If the code takes to little time to execute it doesnt create the ```report.html```
-- No functional defects were found after incrementing the time of execution of the script
-- _______
+### Execution and Results
 - The JSON UI test command successfully executed using the PyInstrument CLI with no errors or warnings.
 - The output file output.json was made without issues.
 - Parsing the JSON shows that the file structure was valid and contained all required top-level fields: ```"root_frame"```,```"duration"```, ```"samples"```, and ```"frames"```
