@@ -12,3 +12,11 @@ Install all this in your enviroment (venv is recomended).
 ```
 pyinstrument test_script.py -o report.html
 ```
+
+### TC-E2E-003
+1. Ensure that this library is installed on your device:
+```pip install pyinstrument```
+2. Install all this in your enviroment (venv is recomended).
+3. Make sure your pathing to ```test_script.py``` is correct
+4. Run this command with the path from step three.
+```python3 -m pyinstrument --renderer json "/mnt/c/.../pyinstrument/courseProjectDocs/System-Testing/Test-JSON-UI/test_script.py" > output.json```
