@@ -18,8 +18,8 @@ We performed a static security analysis on the Python source files inside the `p
 We ran the security test using Bandit with the command `bandit -r pyinstrument/`. The scan completed without errors, skipped files, or interruptions. Bandit reported **19 issues in total**, with **17 low-severity `assert`-related findings** and **2 medium-severity findings related to the use of `exec`**. No unexpected behavior occurred during the scan, and the tool produced consistent results across all tested files.
 
 ## Group contributions
-Ursula: Did tool setup, did vulnerabilities 1 and 2 in the summary table
-Jose: Did vulnerabilities 3 and 4 in the summary table 
+- Ursula: Did tool setup, did vulnerabilities 1 and 2 in the summary table
+- Jose: Did vulnerabilities 3 and 4 in the summary table 
 
 ## Resources used
 Used ChatGPT for help phrasing and formatting readme
