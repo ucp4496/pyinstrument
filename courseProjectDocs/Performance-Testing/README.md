@@ -16,10 +16,10 @@ locust -f locustfile.py --headless --users 10 --spawn-rate 2 --run-time 30s --ho
 
 - Stress Test
 ```
-locust -f locustfile.py --headless --users 10 --spawn-rate 2 --run-time 30s --host=http://localhost:5000 --html=stress.html
+locust -f locustfile.py --headless --users 50 --spawn-rate 5 --run-time 60s --host=http://localhost:5000 --html=stress.html
 ``` 
 
 - Spike Test
 ```
-locust -f locustfile.py --headless --users 10 --spawn-rate 2 --run-time 30s --host=http://localhost:5000 --html=spike.html
+locust -f locustfile.py --headless --users 30 --spawn-rate 10 --run-time 30s --host=http://localhost:5000 --html=spike.html
 ``` 
