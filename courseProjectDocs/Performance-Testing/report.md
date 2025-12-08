@@ -26,11 +26,27 @@ Tested the /profile endpoint of a Flask app running pyinstrument profiler under 
 
 ## SPIKE TEST
 ### Test Scope
+- Performed a spike test on the /profile endpoint of a Flask application to try to emulate an abrupt surge of traffic. Traffic was generated using Locust 2.42.6.
+
 ### Configuration
+- Sudden ramp to  around 30 users, 
+- Duration was 17 seconds
+- Spike load delivered instantly
+
 ### Results
+- 3,762 total requests ( 0% failures )
+- Peak throughput: ~222 RPS
+- Average response time: 16.29 ms
+- Median (50th percentile): 14 ms
+- 95th percentile: ~24–25 ms
+- Max latency: 1,465 ms (small outlier typical during spike tests)
+
 ### Performance Findings
+- System handled the sudden spike without errors or drops in throughput.
+- No degradation or instability observed during or after the spike.
+- Response times remained stable at 14–16 ms even under peak load.
 
 ## Group Contributions
 - Jose: Did tool setup, perform load test and recollect the information from the results
 - Ursula:
-- Michael:
+- Michael: Conducted the Spike Test and reported the data from the results
