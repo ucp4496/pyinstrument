@@ -20,9 +20,37 @@ Tested the /profile endpoint of a Flask app running pyinstrument profiler under 
 
 ## STRESS TEST
 ### Test Scope
+The goal of this stress test was to evaluate the upper performance limits of the /profile endpoint, which executes a pyinstrument profiling routine inside a Flask server.
+This test aims to push the system toward its breaking point by steadily increasing concurrency until the server approaches saturation.
+
 ### Configuration
+- Tool: Locust 2.42.6
+- Users: 50 concurrent simulated users
+- Spawn rate: 5 users/second
+- Duration: 60 seconds
+- Endpoint tested: GET /profile
+- Server: Flask running on port 5050 (note: my port 5000 was in use so I switched to 5050)
+- Traffic pattern: Rapid ramp-up to high sustained load
+
 ### Results
+- Total requests: 12,872
+- Failures: 0% (no failed or rejected requests)
+- Throughput: ~232 requests/second sustained
+- Median response time: 15 ms
+- Max response time: ~37 ms
+- 95th percentile: ~18 ms
+- 99th percentile: ~21 ms
+- No latency spikes or degradation detected
+- Overall, the system maintained stable response times despite high request volume.
+
 ### Performance Findings
+- The Flask + pyinstrument endpoint demonstrated strong resilience under heavy stress, successfully serving ~230–240 requests per second.
+- Zero errors occurred, indicating high stability even when pushed near saturation.
+- Latency remained flat and predictable, with median times consistently around 15 ms.
+- No resource starvation or slowdowns were observed, suggesting that the workload inside heavy_profile() is CPU-light enough to scale efficiently under concurrency.
+- The system comfortably handled all traffic and showed no signs of degradation, implying significant performance headroom for this type of profiling workload.
+- Overall, the stress test confirms that the /profile endpoint is robust, stable, and capable of handling substantially higher request volumes than those tested in the load scenario.
+
 
 ## SPIKE TEST
 ### Test Scope
@@ -32,5 +60,8 @@ Tested the /profile endpoint of a Flask app running pyinstrument profiler under 
 
 ## Group Contributions
 - Jose: Did tool setup, perform load test and recollect the information from the results
-- Ursula:
+- Ursula: Did stress test and report
 - Michael:
+
+## Resources
+ChatGPT was used for help with phrasing the report and interpreting results.
